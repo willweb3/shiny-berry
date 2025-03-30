@@ -5,11 +5,11 @@ const {
 
 async function getPokemonList(req, res) {
   try {
+    const offset = parseInt(req.query.offset) || 0;
+    const limit = parseInt(req.query.limit) || 20;
     const pokemonList = await fetchPokemonList();
-    const formattedList = pokemonList.map((p) => ({
-      name: p.name,
-    }));
-    res.json(formattedList);
+    const paginatedList = pokemonList.slice(offset, offset + limit);
+    res.json(paginatedList);
   } catch (error) {
     res.status(500).json({ error: "Error to get the list" });
   }

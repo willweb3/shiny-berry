@@ -16,12 +16,26 @@ async function fetchPokemonList() {
 
   try {
     const response = await axios.get(`${BASE_URL}/pokemon?limit=${LIMIT}`);
-    const pokemonList = response.data.results.map((pokemon) => ({
-      name: pokemon.name,
-      url: pokemon.url,
-    }));
+    const pokemonList = await Promise.all(
+      response.data.results.map(async (pokemon) => {
+        const detailResponse = await axios.get(pokemon.url);
+        const data = detailResponse.data;
+        const types = data.types.map((t) => t.type.name);
+        return {
+          id: data.id,
+          name: data.name,
+          sprites: {
+            front_default: data.sprites.front_default,
+            back_default: data.sprites.back_default,
+          },
+          types,
+          region: getPokemonRegion(data.id),
+          weaknesses: getWeaknesses(types),
+        };
+      })
+    );
+    console.log("Yeah! Pokémon list:", pokemonList);
     await cache.set(cacheKey, pokemonList, 3600);
-    console.log("Pokémon list:", pokemonList);
     return pokemonList;
   } catch (error) {
     console.error("Error:", error.message);

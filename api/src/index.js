@@ -1,9 +1,12 @@
 const express = require("express");
+const cors = require("cors");
 const pokemonController = require("./controllers/pokemonController");
 const { fetchPokemonList } = require("./services/pokemonService");
 
 const app = express();
 const port = 3001;
+
+app.use(cors());
 
 app.get("/", (req, res) => res.send("Bolttedex MVP"));
 app.get("/api/pokemon", pokemonController.getPokemonList);
@@ -20,7 +23,7 @@ setInterval(async () => {
 }, CACHE_UPDATE_INTERVAL);
 
 app.listen(port, () => {
-  console.log(`Server running http://localhost:${port}`);
+  console.log(`Server running at http://localhost:${port}`);
   fetchPokemonList()
     .then(() => console.log("Initial cache updated"))
     .catch((error) => console.error("Error:", error.message));
