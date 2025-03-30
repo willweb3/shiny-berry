@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 import "./PokemonList.css";
+import PokemonCard from "../PokemonCard";
+import PokemonModal from "../PokemonModal";
 
 const BASE_URL = "http://localhost:3001/api";
 
-function PokemonList() {
+const PokemonList = () => {
   const [pokemon, setPokemon] = useState([]);
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
@@ -51,43 +53,16 @@ function PokemonList() {
       >
         <div className="pokemon-list">
           {pokemon.map((p) => (
-            <div
-              key={p.id}
-              className="pokemon-card"
-              onClick={() => handlePokemonClick(p)}
-            >
-              <img src={p.sprites.front_default} alt={p.name} />
-              <h3>{p.name}</h3>
-              <p>{p.types.map((t) => t).join(", ")}</p>{" "}
-            </div>
+            <PokemonCard pokemon={p} onClick={() => handlePokemonClick(p)} />
           ))}
         </div>
       </InfiniteScroll>
 
       {selectedPokemon && (
-        <div className="modal">
-          <div className="modal-content">
-            <button className="modal-close" onClick={closeModal}>
-              X
-            </button>
-            <h2>{selectedPokemon.name}</h2>
-            <img src={selectedPokemon.sprites.front_default} alt="front" />
-            <img src={selectedPokemon.sprites.back_default} alt="back" />
-            <p>
-              <strong>Types:</strong> {selectedPokemon.types.join(", ")}
-            </p>
-            <p>
-              <strong>Region:</strong> {selectedPokemon.region}
-            </p>
-            <p>
-              <strong>Weaknesses:</strong>{" "}
-              {selectedPokemon.weaknesses.join(", ")}
-            </p>
-          </div>
-        </div>
+        <PokemonModal pokemon={selectedPokemon} onClose={closeModal} />
       )}
     </>
   );
-}
+};
 
 export default PokemonList;
