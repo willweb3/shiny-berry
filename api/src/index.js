@@ -11,6 +11,7 @@ app.use(cors());
 app.get("/", (req, res) => res.send("Bolttedex MVP"));
 app.get("/api/pokemon", pokemonController.getPokemonList);
 app.get("/api/pokemon/:id", pokemonController.getPokemonById);
+app.get("/api/search/:term", pokemonController.searchPokemon);
 
 const CACHE_UPDATE_INTERVAL = 60 * 60 * 1000;
 setInterval(async () => {

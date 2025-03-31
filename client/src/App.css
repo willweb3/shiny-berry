@@ -1,4 +1,202 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .App {
   text-align: center;
-  padding: 20px;
+  padding: 80px 100px 20px;
+  transition: background-color 0.3s, color 0.3s;
+  background-color: #fafafa;
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .App {
+    padding: 70px 60px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .App {
+    padding: 70px 20px 20px;
+  }
+}
+
+.App.dark-mode {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.floating-dark-mode-btn-container,
+.view-toggle-btn-container {
+  position: fixed;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  z-index: 9999;
+}
+
+.floating-dark-mode-btn-container {
+  z-index: 99991;
+}
+
+.view-toggle-btn-container {
+  bottom: 140px;
+}
+
+.floating-dark-mode-btn,
+.view-toggle-btn {
+  background: #fafafa;
+  border: 1px solid #1a1a1a;
+  box-shadow: 0 2px 8px #1a1a1a30;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s;
+  position: relative;
+}
+
+.floating-dark-mode-btn::after,
+.view-toggle-btn::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.floating-dark-mode-btn:hover::after,
+.view-toggle-btn:hover::after {
+  opacity: 1;
+}
+
+.floating-dark-mode-btn.dark-mode,
+.view-toggle-btn.dark-mode {
+  background-color: #444;
+  color: #fff;
+}
+
+.floating-dark-mode-btn:hover,
+.view-toggle-btn:hover {
+  background-color: #ececec;
+}
+
+.floating-dark-mode-btn.dark-mode:hover,
+.view-toggle-btn.dark-mode:hover {
+  background-color: #666;
+}
+
+.view-toggle-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.toggle-view-btn {
+  background: #fafafa;
+  border: 1px solid #1a1a1a;
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.toggle-view-btn.active {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.toggle-view-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-list.list-view {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.floating-buttons-container {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  z-index: 9999;
+}
+
+.view-toggle-btn {
+  background: #fafafa;
+  border: 1px solid #1a1a1a;
+  box-shadow: 0 2px 8px #1a1a1a30;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s;
+  position: relative;
+}
+
+.view-toggle-btn::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.view-toggle-btn:hover::after {
+  opacity: 1;
+}
+
+.dark-mode .view-toggle-btn {
+  background-color: #444;
+  color: #fff;
+}
+
+.dark-mode .view-toggle-btn:hover {
+  background-color: #666;
+}
+
+@media (max-width: 768px) {
+  .floating-buttons-container {
+    z-index: 9998;
+  }
+  .floating-dark-mode-btn-container {
+    z-index: 9998;
+  }
 }
