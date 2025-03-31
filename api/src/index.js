@@ -29,3 +29,5 @@ app.listen(port, () => {
     .then(() => console.log("Initial cache updated"))
     .catch((error) => console.error("Error:", error.message));
 });
+
+module.exports = app;
