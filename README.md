@@ -37,26 +37,37 @@ This project requires three terminals to run:
    redis-server
 
 2. **Start Backend API**:
+   
    cd api
+
    npm install
+
    npm start
 
 3. **Start Frontend Client**:
+   
    cd client
+   
    npm install
+   
    npm start
 
 ## You can Run the tests
 
 1. **Backend Tests (mocha/chai)**:
+   
    cd api
+   
    npm test
 
 1. **Fronend Tests (jest)**:
+   
    cd client
+   
    npm test
 
-### Author
+:computer:
 
-Willian Almeida
 Thank you for reviewing!
+
+Author: Willian Almeida
