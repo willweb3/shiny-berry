@@ -41,6 +41,7 @@
 .pokemon-list-item .list-item-name {
   font-weight: bold;
   margin-right: 10px;
+  text-transform: capitalize;
 }
 
 .pokemon-list-item .list-item-types {
