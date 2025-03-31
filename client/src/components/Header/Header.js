@@ -28,7 +28,7 @@ const Header = ({ searchTerm, setSearchTerm }) => {
             placeholder="Search by name or ID"
             value={localSearchTerm}
             onChange={handleInputChange}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyPress}
           />
         </div>
       </div>
