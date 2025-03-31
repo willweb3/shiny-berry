@@ -4,7 +4,9 @@ const client = createClient({
   url: "redis://localhost:6379",
 });
 
-client.on("error", (err) => console.error("Erro no Redis:", err));
+client.on("error", (err) => console.error("Error Redis:", err));
+client.on("reconnecting", () => console.log("Reconect Redis..."));
+client.on("connect", () => console.log("Done Redis!"));
 
 (async () => {
   await client.connect();

@@ -1,0 +1,125 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 8px 8px 0 0;
+  position: absolute;
+  max-width: 800px;
+  width: 90%;
+  text-align: left;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 8px #cccccc30;
+  border: 1px solid #cccccc;
+  height: 60vh;
+  margin: 0;
+  bottom: 0;
+  top: auto;
+  transform: none;
+}
+
+.modal-close {
+  position: absolute;
+  top: -65px;
+  right: 0;
+  background: #ff6b6b;
+  color: #ffffffdd;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font: 1.3rem/32px sans-serif;
+  font-weight: lighter;
+  transition: 0.3s ease-out;
+}
+
+.modal-close:hover {
+  background: #ff4c4c;
+}
+
+.modal-content img {
+  max-width: 200px;
+  width: 200px;
+  margin: 12px auto;
+  display: block;
+}
+
+.dark-mode .modal-content {
+  background: #2a2a2a;
+  color: #fff;
+  border-color: #444;
+  box-shadow: 0 2px 8px #44444430;
+}
+
+.type-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.type-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  color: #fff;
+  text-transform: capitalize;
+  min-width: 50px;
+  text-align: center;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.modal-content h2 {
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+  color: inherit;
+  text-transform: capitalize;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-content.slide-up {
+  animation: slideUp 0.4s ease-out;
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 100%;
+    padding: 0px;
+    border-radius: 32px 32px 0 0;
+  }
+  .modal-content > * {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
