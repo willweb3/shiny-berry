@@ -18,8 +18,8 @@ const PokemonCard = ({ pokemon, onClick, isDarkMode }) => {
             className="type-badge"
             style={{
               backgroundColor: isDarkMode
-                ? typeColors[type].dark
-                : typeColors[type].light,
+                ? typeColors[type]?.dark || "#000"
+                : typeColors[type]?.light || "#fff",
             }}
           >
             {type}

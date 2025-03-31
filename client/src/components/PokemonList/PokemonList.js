@@ -14,7 +14,6 @@ const PokemonList = ({ isDarkMode, searchTerm, setSearchTerm }) => {
   const [hasMore, setHasMore] = useState(true);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [isListView, setIsListView] = useState(false);
-  const [lastOffset, setLastOffset] = useState(0);
   const limit = 30;
 
   const fetchPokemon = async (reset = false) => {
